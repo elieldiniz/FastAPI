@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Portfolio - Retro Tech Blog</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Merriweather:ital,wght@0,400;0,700;1,400&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4b5d50",
+                        "background-light": "#f7f7f7",
+                        "background-dark": "#181a19",
+                        "retro-cream": "#FBF9F4",
+                        "retro-border": "#D8D3C8",
+                        "moss-green": "#4A5D4E",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "serif": ["Merriweather", "serif"],
+                        "mono": ["IBM Plex Sans", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .retro-card {
+            background-color: #FBF9F4;
+            border: 1px solid #D8D3C8;
+            box-shadow: 2px 2px 0px 0px #D8D3C8;
+        }
+        .serif-text {
+            font-family: 'Merriweather', serif;
+        }
+        .mono-tag {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-[#141514] dark:text-neutral-50 transition-colors duration-200">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-retro-border dark:border-neutral-800">
+<div class="flex items-center justify-between p-4 max-w-md mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary dark:text-neutral-400">terminal</span>
+<h1 class="text-lg font-bold tracking-tight font-display">Portfolio</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center size-8">
+<span class="material-symbols-outlined text-xl">search</span>
+</button>
+<button class="flex items-center justify-center size-8 bg-primary rounded text-white">
+<span class="material-symbols-outlined text-xl">menu</span>
+</button>
+</div>
+</div>
+</header>
+<main class="max-w-md mx-auto px-4 pb-20">
+<!-- Section Header -->
+<div class="py-8">
+<h2 class="text-2xl font-bold font-display leading-none mb-2">Recent Works</h2>
+<p class="text-sm text-neutral-500 dark:text-neutral-400 serif-text italic">A curated gallery of engineering experiments and digital artifacts.</p>
+</div>
+<!-- Project Cards Container -->
+<div class="flex flex-col gap-6">
+<!-- Card 1 -->
+<div class="retro-card p-4 flex flex-col gap-4 dark:bg-neutral-900 dark:border-neutral-800">
+<div class="w-full aspect-video rounded-sm bg-center bg-cover border border-retro-border/50" data-alt="Monochrome interface of a retro operating system simulation" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDUKhru0uDolILvPwBSqppbo5hNtN7KfI03iFKClh6s48QJ77JggLPb7WA-Ymvddtc2cIiiNJ1X3n-S1FHrZ2ao6Nlo_hRK6OGDAIu6wJME1YjcUXBGE3XW_eNPU2CFb7ZQfdUtVZTqtSE-D-T7kBDz9aY_Ts2aS7kWdQXMUqEEfz4qabqxMLCY2qCVFQDLPjgU7rLOGqs3N2_yTRFNEwRCa2MMrpX7yhaiwvYt_svLaWDHpQCr59QcKlFvyuuzmT6lGyZGI9jIjdGh');">
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<h3 class="text-lg font-bold font-display">Retro OS Simulator</h3>
+<span class="text-[10px] mono-tag opacity-50">v1.0.4</span>
+</div>
+<p class="serif-text text-sm leading-relaxed text-neutral-700 dark:text-neutral-300">
+                        A browser-based recreation of 1980s terminal interfaces. Focusing on low-latency visual feedback and authentic phosphor glow effects using GLSL shaders.
+                    </p>
+<div class="flex flex-wrap gap-2 mt-2">
+<span class="mono-tag px-2 py-0.5 bg-moss-green text-white rounded-sm">React</span>
+<span class="mono-tag px-2 py-0.5 bg-moss-green text-white rounded-sm">GLSL</span>
+<span class="mono-tag px-2 py-0.5 bg-moss-green text-white rounded-sm">WebAudio</span>
+</div>
+<div class="flex justify-end items-center gap-4 mt-4 pt-3 border-t border-retro-border dark:border-neutral-800">
+<button class="flex items-center gap-1 text-sm font-medium hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">code</span>
+<span class="mono-tag">Source</span>
+</button>
+<button class="flex items-center gap-1 text-sm font-medium hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">open_in_new</span>
+<span class="mono-tag">Demo</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="retro-card p-4 flex flex-col gap-4 dark:bg-neutral-900 dark:border-neutral-800">
+<div class="w-full aspect-video rounded-sm bg-center bg-cover border border-retro-border/50" data-alt="Oscilloscope waveform display on a dark background" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAJifeQMQ-tnHA9Fyi36RgW9ghpQWVyOTc1Fexrpj0tiX3f4PIH9piIYazhsFkpPQNnOFgHkOpQUvq5qi5xqkYbwAKUr80N6wqAYw7Dta6jnXEtdb4-f3pv2VvFrH62X4O9VrprmvDPlTSsgepthj7iERz4BEQjF7AscRaXVTOo1gE0cZpfHjIxqSGd5oeyIPQwELfS2SrAykdXxAWzgKQZK1V7M4Gy-VWXpW9Ptca9Fkt7XzSjsz_HyXDvIQVG87FGlNwe24M4POns');">
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<h3 class="text-lg font-bold font-display">Analog Audio Processor</h3>
+<span class="text-[10px] mono-tag opacity-50">v0.8.2</span>
+</div>
+<p class="serif-text text-sm leading-relaxed text-neutral-700 dark:text-neutral-300">
+                        Digital signal processing library designed to emulate warmth and saturation of vacuum tubes. Focusing on harmonic distortion algorithms.
+                    </p>
+<div class="flex flex-wrap gap-2 mt-2">
+<span class="mono-tag px-2 py-0.5 bg-moss-green text-white rounded-sm">Rust</span>
+<span class="mono-tag px-2 py-0.5 bg-moss-green text-white rounded-sm">WASM</span>
+<span class="mono-tag px-2 py-0.5 bg-moss-green text-white rounded-sm">DSP</span>
+</div>
+<div class="flex justify-end items-center gap-4 mt-4 pt-3 border-t border-retro-border dark:border-neutral-800">
+<button class="flex items-center gap-1 text-sm font-medium hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">code</span>
+<span class="mono-tag">Repo</span>
+</button>
+<button class="flex items-center gap-1 text-sm font-medium hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">podcasts</span>
+<span class="mono-tag">Live</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="retro-card p-4 flex flex-col gap-4 dark:bg-neutral-900 dark:border-neutral-800">
+<div class="w-full aspect-video rounded-sm bg-center bg-cover border border-retro-border/50" data-alt="Top down view of vintage typewriter keys and paper" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDaxUHCI7-Eyv0NEaTWP6RG6s553uFeSU2n1_9xPIvnHxoN-989LKlmxYWkXTHKgPI70I8ciimd0rzVoN0kDrC5qpyILj5UVIQsiIRqx_el3m72OzgNQ4fKZiZOJOI-57OBXkfKc5rs2DFlOCjxKeTZEg5gonaRxnaEoYCSp15xwRX5hrCV6Hb1qUnHH_eWJpSzeJb5iuA-MOEegA1_4u3mX7UKvJUWxQ6ws8vV9lWELJ3tfgar95Jk_mlU996js-D0G57gSN08Oi5Q');">
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<h3 class="text-lg font-bold font-display">Lexicon Engine</h3>
+<span class="text-[10px] mono-tag opacity-50">stable</span>
+</div>
+<p class="serif-text text-sm leading-relaxed text-neutral-700 dark:text-neutral-300">
+                        A minimalist markdown parser and static site generator. Designed for archival-grade documentation with zero dependencies.
+                    </p>
+<div class="flex flex-wrap gap-2 mt-2">
+<span class="mono-tag px-2 py-0.5 bg-moss-green text-white rounded-sm">Node.js</span>
+<span class="mono-tag px-2 py-0.5 bg-moss-green text-white rounded-sm">RegExp</span>
+</div>
+<div class="flex justify-end items-center gap-4 mt-4 pt-3 border-t border-retro-border dark:border-neutral-800">
+<button class="flex items-center gap-1 text-sm font-medium hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">code</span>
+<span class="mono-tag">Github</span>
+</button>
+<button class="flex items-center gap-1 text-sm font-medium hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">visibility</span>
+<span class="mono-tag">View</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer / Call to Action -->
+<div class="mt-16 py-12 border-t-2 border-dotted border-retro-border text-center">
+<p class="serif-text italic text-neutral-500 mb-6">Want to collaborate on something distinctive?</p>
+<button class="bg-primary text-white font-display font-bold px-8 py-3 rounded-sm shadow-md active:translate-y-0.5 transition-all">
+                LET'S TALK
+            </button>
+<div class="mt-12 flex justify-center gap-6 text-neutral-400">
+<span class="material-symbols-outlined">alternate_email</span>
+<span class="material-symbols-outlined">description</span>
+<span class="material-symbols-outlined">rss_feed</span>
+</div>
+<p class="mt-8 mono-tag opacity-30 text-[9px]">© 1984-2024 Archive Protocol. All rights reserved.</p>
+</div>
+</main>
+<!-- Navigation Tab Bar (iOS style) -->
+<nav class="fixed bottom-0 left-0 right-0 bg-retro-cream dark:bg-neutral-900 border-t border-retro-border dark:border-neutral-800 px-6 py-3 pb-8 flex justify-between items-center z-50">
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined">folder_special</span>
+<span class="mono-tag scale-75">Work</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-neutral-400">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="mono-tag scale-75">Blog</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-neutral-400">
+<span class="material-symbols-outlined">person</span>
+<span class="mono-tag scale-75">About</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-neutral-400">
+<span class="material-symbols-outlined">send</span>
+<span class="mono-tag scale-75">Contact</span>
+</button>
+</nav>
+</body></html>

@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api.routes import auth, users, posts
+from app.api.routes import auth, users, posts, portfolio
 from app.core.config import settings
 
 app = FastAPI(
@@ -22,6 +22,8 @@ app.add_middleware(
 app.include_router(auth.router, prefix=f"{settings.API_V1_STR}/auth", tags=["auth"])
 app.include_router(users.router, prefix=f"{settings.API_V1_STR}/users", tags=["users"])
 app.include_router(posts.router, prefix=f"{settings.API_V1_STR}/posts", tags=["posts"])
+app.include_router(portfolio.router, tags=["portfolio"])
+
 
 @app.get("/")
 def root():

@@ -10,9 +10,28 @@ from app.services.auth_service import auth_service
 from app.services.post_service import post_service
 from app.core import security
 from app.models.user import User
+import markdown2
+import bleach
 
 router = APIRouter()
 templates = Jinja2Templates(directory="app/templates")
+
+def markdown_filter(text):
+    # Convert markdown to HTML
+    html = markdown2.markdown(text, extras=["fenced-code-blocks", "tables"])
+    # Sanitize HTML
+    allowed_tags = bleach.ALLOWED_TAGS | {
+        'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+        'pre', 'code', 'span', 'div', 'br',
+        'table', 'thead', 'tbody', 'tr', 'th', 'td'
+    }
+    allowed_attrs = bleach.ALLOWED_ATTRIBUTES.copy()
+    allowed_attrs['*'] = ['class', 'style']
+
+    clean_html = bleach.clean(html, tags=allowed_tags, attributes=allowed_attrs)
+    return clean_html
+
+templates.env.filters["markdown"] = markdown_filter
 
 @router.get("/", response_class=HTMLResponse)
 async def home(

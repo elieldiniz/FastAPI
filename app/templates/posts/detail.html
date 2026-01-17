@@ -12,7 +12,7 @@
     </header>
 
     <div style="font-size: 1.1rem; line-height: 1.8;">
-        {{ post.content | replace('\n', '<br>') | safe }}
+        {{ post.content | markdown | safe }}
     </div>
 
     <div style="margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--border-color);">

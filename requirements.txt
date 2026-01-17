@@ -13,3 +13,5 @@ aiofiles
 psycopg2-binary
 pytest
 httpx
+markdown2
+bleach

@@ -37,16 +37,31 @@ def seed():
     if post_repo.get_multi(db, limit=1) == []:
         post1 = PostCreate(
             title="The Resurgence of Mechanical Keyboards in the 21st Century",
-            content="""For decades, the humble membrane keyboard reigned supreme in offices and homes...
-            The shift wasn't just about nostalgia. As professional typing time increased and gaming became a global phenomenon...
-            """,
+            content="""For decades, the humble membrane keyboard reigned supreme in offices and homes. But recently, we've seen a massive comeback of **mechanical keyboards**.
+
+### Why the shift?
+1. **Tactile Feedback**: Every keypress is a physical event.
+2. **Durability**: Built to last for millions of strokes.
+3. **Customization**: From switches to keycaps.
+
+> "A good keyboard is the primary tool of the digital artisan."
+
+The shift wasn't just about nostalgia. As professional typing time increased and gaming became a global phenomenon, the demand for precision and comfort skyrocketed.""",
             published=True
         )
         post_repo.create_with_author(db, obj_in=post1, author_id=admin_user.id)
 
         post2 = PostCreate(
             title="The Aesthetics of CRT Monitors",
-            content="In the era of sleek LCDs and ultra-thin OLEDs, there's a growing movement rediscovering the warm glow of cathode ray tubes...",
+            content="""In the era of sleek LCDs and ultra-thin OLEDs, there's a growing movement rediscovering the warm glow of cathode ray tubes.
+
+```python
+def render_scanline(line_data):
+    # Simulating the phosphor glow
+    return [glow(pixel) for pixel in line_data]
+```
+
+CRTs offer a unique way of rendering motion that modern displays still struggle to emulate. The *instantaneous* response and natural anti-aliasing of the electron beam created an image that many retro enthusiasts find superior for classic media.""",
             published=True
         )
         post_repo.create_with_author(db, obj_in=post2, author_id=admin_user.id)

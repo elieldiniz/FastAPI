@@ -1,22 +1,55 @@
-# 🏗️ Arquitetura do Projeto
+# 🏗️ Boas Práticas de Arquitetura – Backend (FastAPI)
 
-Este projeto utiliza uma arquitetura em camadas para garantir a separação de responsabilidades e facilitar a manutenção.
+Este documento descreve a organização técnica do Mini Blog API.
 
-## Camadas
+## 1. Visão Geral da Arquitetura
 
-1.  **API (Routes)**: Responsável por receber as requisições HTTP, validar os dados de entrada via Schemas e chamar os Serviços correspondentes.
-2.  **Services**: Contém a lógica de negócio da aplicação. Orquestra as chamadas aos Repositórios e aplica regras de validação complexas.
-3.  **Repositories**: Camada de abstração para acesso ao banco de dados. Realiza operações de CRUD puras.
-4.  **Models**: Definições das entidades do banco de dados usando SQLAlchemy.
-5.  **Schemas**: Modelos Pydantic para validação de dados de entrada e saída (DTOs).
-6.  **Core**: Configurações globais, segurança (JWT, hashing) e conexão com o banco de dados.
+Seguimos uma arquitetura em camadas (Layered Architecture) que separa preocupações e facilita a testabilidade.
 
-## Fluxo de Dados
+```
+Client (Frontend/API Client)
+       ↓
+API Routes (app/api & app/web)
+       ↓
+Services (app/services)
+       ↓
+Repositories (app/repositories)
+       ↓
+Database (SQLAlchemy Models)
+```
 
-`Cliente -> Route -> Service -> Repository -> Banco de Dados`
+## 2. Responsabilidade das Camadas
 
-## Decisões Técnicas
+### 📌 Routes (API/Web)
+- Recebem requisições HTTP.
+- Validam dados básicos via Pydantic Schemas.
+- Chamam os **Services** apropriados.
+- **NÃO** acessam o banco de dados diretamente.
 
-- **FastAPI**: Escolhido pela performance e facilidade de documentação.
-- **Dependency Injection**: Utilizado extensivamente para gerenciar sessões de banco de dados e autenticação.
-- **RBAC (Role Based Access Control)**: Implementado para restringir operações de escrita apenas a administradores.
+### 📌 Services (Regras de Negócio)
+- Contêm toda a lógica de domínio.
+- Orquestram operações entre múltiplos repositórios se necessário.
+- Independentes de protocolos de transporte (HTTP/gRPC).
+
+### 📌 Repositories (Persistência)
+- Encapsulam o acesso ao banco de dados usando SQLAlchemy.
+- Realizam operações CRUD.
+- Mantêm o código SQL/ORM isolado.
+
+### 📌 Models & Schemas
+- **Models**: Representam as entidades no banco de dados.
+- **Schemas**: Definem a estrutura de dados para entrada e saída da API (DTOs).
+
+## 3. Injeção de Dependências
+
+Utilizamos o sistema de `Depends` do FastAPI para:
+- Gerenciar sessões de banco de dados.
+- Autenticação e extração do usuário atual.
+- Verificação de papéis (Admin/User).
+
+## 4. Estilo Visual (Retro Modern)
+
+O frontend integrado utiliza um design system "Retro Modern":
+- **Cores**: Off-white (`#F5F1EA`), Verde Musgo (`#4A5D4E`), Azul Petróleo (`#2F4F4F`).
+- **Tipografia**: Serifada para leitura (`Merriweather`) e Sans-serif para UI (`Inter`).
+- **Filosofia**: Foco em conteúdo técnico e acadêmico, inspirado em arquivos e estudos de caso.

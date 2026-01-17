@@ -1,52 +1,54 @@
-# Mini Blog API - FastAPI
+# 🎯 Mini Blog Profissional - FastAPI
 
-Este é um projeto de backend profissional para um mini-blog, construído com FastAPI, seguindo as melhores práticas de mercado.
+Este projeto é uma implementação de referência de um sistema de blog profissional utilizando **FastAPI**, focado em segurança, arquitetura limpa e uma experiência de leitura "Retro Modern".
 
-## 🚀 Funcionalidades
+## 🚀 Funcionalidades Principais
 
-- **Autenticação**: Login via JWT (OAuth2).
-- **Controle de Acesso (RBAC)**: Diferenciação entre Admin e Usuário comum.
-- **Posts**: CRUD completo de posts (apenas Admins podem criar/editar/deletar).
-- **Segurança**: Senhas hasheadas com bcrypt, validação de tokens JWT.
-- **Documentação**: Swagger automático disponível em `/docs`.
+- **Sistema de Usuários**: Registro e Login com JWT.
+- **RBAC (Role Based Access Control)**: Distinção entre administradores e leitores.
+- **Gestão de Conteúdo**: Dashboard administrativo para CRUD de posts.
+- **Frontend Integrado**: SSR (Server-Side Rendering) com Jinja2 e HTMX para interatividade sem complexidade de SPA.
+- **Design Retro Modern**: Estética focada em legibilidade e estilo técnico/acadêmico.
+- **API Completa**: Documentação automática via Swagger/ReDoc.
 
-## 🛠️ Tecnologias
+## 🛠️ Stack Tecnológica
 
-- **FastAPI**: Framework web moderno e rápido.
-- **SQLAlchemy**: ORM para interação com o banco de dados.
-- **Alembic**: Gerenciamento de migrações de banco de dados.
-- **Pydantic**: Validação de dados e configurações.
-- **PostgreSQL / SQLite**: Banco de dados.
+- **API**: FastAPI
+- **DB**: SQLAlchemy 2.0 + PostgreSQL/SQLite
+- **Auth**: JWT + OAuth2 + Bcrypt
+- **Migrations**: Alembic
+- **Templates**: Jinja2 + HTMX
+- **Config**: Pydantic Settings
 
-## 🏃 Como Rodar
+## 📂 Estrutura do Repositório
 
-1.  **Instale as dependências**:
-    ```bash
-    pip install -r requirements.txt
-    ```
+- `app/api`: Endpoints REST tradicionais.
+- `app/web`: Rotas para renderização de páginas HTML.
+- `app/services`: Lógica de negócio.
+- `app/repositories`: Acesso ao banco de dados.
+- `app/static`: Ativos (CSS, Imagens, JS).
+- `app/templates`: Páginas Jinja2.
 
-2.  **Rode as migrações**:
-    ```bash
-    alembic upgrade head
-    ```
+## 🏁 Como Começar
 
-3.  **Inicie o servidor**:
-    ```bash
-    uvicorn app.main:app --reload
-    ```
+1. **Instalação**:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-4.  **Acesse a documentação**:
-    Abra `http://127.0.0.1:8000/docs` no seu navegador.
+2. **Banco de Dados**:
+   ```bash
+   alembic upgrade head
+   python3 -m app.seed
+   ```
 
-## 📂 Estrutura do Projeto
+3. **Execução**:
+   ```bash
+   uvicorn app.main:app --reload
+   ```
 
-```bash
-app/
-├── api/             # Rotas e dependências
-├── core/            # Configurações, segurança e DB
-├── models/          # Modelos SQLAlchemy (Banco de dados)
-├── schemas/         # Modelos Pydantic (Validação)
-├── repositories/    # Camada de acesso a dados
-├── services/        # Regras de negócio
-└── migrations/      # Migrações do banco de dados (Alembic)
-```
+Acesse em: `http://localhost:8000`
+
+---
+
+*Desenvolvido seguindo as melhores práticas de engenharia de software.*

@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Inter:wght@400;600&display=swap');
+
+:root {
+    --bg-color: #F5F1EA;
+    --text-color: #1E1E1E;
+    --primary-color: #4A5D4E;
+    --secondary-color: #2F4F4F;
+    --border-color: #D8D3C8;
+    --card-bg: #FBF9F4;
+    --success-color: #5B7F6A;
+    --error-color: #8B3A3A;
+    --warning-color: #A67C52;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Merriweather', serif;
+    line-height: 1.7;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, .ui-font {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    border-bottom: 1px solid var(--border-color);
+    padding: 20px 0;
+    margin-bottom: 40px;
+}
+
+header nav a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    margin-right: 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+header nav a:hover {
+    color: var(--text-color);
+    text-decoration: underline;
+}
+
+/* Cards */
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    box-shadow: 2px 2px 0 rgba(0,0,0,0.05);
+    padding: 24px;
+    margin-bottom: 24px;
+    transition: transform 0.15s ease;
+}
+
+.card:hover {
+    transform: translateY(-1px);
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border: none;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: var(--card-bg);
+}
+
+.btn-primary:hover {
+    background: #3F5144;
+}
+
+/* Forms */
+form div {
+    margin-bottom: 16px;
+}
+
+label {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--card-bg);
+    font-family: 'Merriweather', serif;
+    box-sizing: border-box;
+}
+
+/* Footer */
+footer {
+    border-top: 1px solid var(--border-color);
+    padding: 40px 0;
+    margin-top: 80px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--secondary-color);
+}

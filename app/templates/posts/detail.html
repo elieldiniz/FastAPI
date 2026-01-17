@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }} - Retro Tech Blog{% endblock %}
+
+{% block content %}
+<article style="max-width: 720px; margin: 0 auto;">
+    <header style="border-bottom: none; text-align: center; margin-bottom: 20px;">
+        <h1 style="font-size: 2.5rem; margin-bottom: 10px;">{{ post.title }}</h1>
+        <p style="color: var(--secondary-color); font-family: 'Inter', sans-serif; font-size: 0.9rem;">
+            BY {{ post.author.email.split('@')[0].upper() }} | {{ post.created_at.strftime('%B %d, %Y').upper() }}
+        </p>
+    </header>
+
+    <div style="font-size: 1.1rem; line-height: 1.8;">
+        {{ post.content | replace('\n', '<br>') | safe }}
+    </div>
+
+    <div style="margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--border-color);">
+        <a href="/posts" style="color: var(--primary-color); text-decoration: none; font-weight: 700; font-family: 'Inter', sans-serif;">&larr; BACK TO ARCHIVE</a>
+    </div>
+</article>
+{% endblock %}

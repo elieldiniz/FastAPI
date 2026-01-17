@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mini Blog{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/main.css') }}">
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <a href="/" style="font-weight: 700; font-size: 1.2rem;">Retro Tech Blog</a>
+                </div>
+                <div>
+                    <a href="/">Home</a>
+                    <a href="/posts">Posts</a>
+                    {% if user %}
+                        {% if user.role == 'admin' %}
+                            <a href="/dashboard">Dashboard</a>
+                        {% endif %}
+                        <a href="/profile">Profile</a>
+                        <a href="/logout">Logout</a>
+                    {% else %}
+                        <a href="/login">Login</a>
+                    {% endif %}
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Retro Tech Blog. Powered by FastAPI.</p>
+        </div>
+    </footer>
+</body>
+</html>

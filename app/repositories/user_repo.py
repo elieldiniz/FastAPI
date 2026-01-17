@@ -13,6 +13,7 @@ class UserRepository:
     def create(self, db: Session, obj_in: UserCreate):
         db_obj = User(
             email=obj_in.email,
+            full_name=obj_in.full_name,
             hashed_password=get_password_hash(obj_in.password),
             role="user",
             is_active=True,

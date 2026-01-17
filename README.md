@@ -42,7 +42,13 @@ Este projeto é uma implementação de referência de um sistema de blog profiss
    python3 -m app.seed
    ```
 
-3. **Execução**:
+3. **Criar um Usuário Admin**:
+   Para criar novos administradores com segurança, utilize o utilitário CLI:
+   ```bash
+   python3 -m app.cli create-admin --email admin@meublog.com --password minha-senha --name "Nome do Admin"
+   ```
+
+4. **Execução**:
    ```bash
    uvicorn app.main:app --reload
    ```

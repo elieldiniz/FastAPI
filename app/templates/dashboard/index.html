@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Retro Tech Blog{% endblock %}
+
+{% block content %}
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+    <h1>Administrator Dashboard</h1>
+    <a href="/dashboard/posts/new" class="btn btn-primary">+ NEW ARCHIVE ENTRY</a>
+</div>
+
+<div class="card">
+    <h2 style="margin-bottom: 20px;">Manage Posts</h2>
+    <table style="width: 100%; border-collapse: collapse; font-family: 'Inter', sans-serif; font-size: 0.9rem;">
+        <thead>
+            <tr style="border-bottom: 2px solid var(--border-color); text-align: left; text-transform: uppercase; color: var(--secondary-color);">
+                <th style="padding: 12px;">ID</th>
+                <th style="padding: 12px;">Title</th>
+                <th style="padding: 12px;">Status</th>
+                <th style="padding: 12px;">Created At</th>
+                <th style="padding: 12px; text-align: right;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for post in posts %}
+            <tr id="post-row-{{ post.id }}" style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 12px;">{{ post.id }}</td>
+                <td style="padding: 12px; font-weight: 600;">{{ post.title }}</td>
+                <td style="padding: 12px;">
+                    {% if post.published %}
+                    <span style="color: var(--success-color); font-weight: 700;">● PUBLISHED</span>
+                    {% else %}
+                    <span style="color: var(--warning-color); font-weight: 700;">○ DRAFT</span>
+                    {% endif %}
+                </td>
+                <td style="padding: 12px; color: var(--secondary-color);">{{ post.created_at.strftime('%Y-%m-%d') }}</td>
+                <td style="padding: 12px; text-align: right;">
+                    <a href="/dashboard/posts/{{ post.id }}/edit" style="color: var(--secondary-color); text-decoration: none; margin-right: 15px; font-weight: 700;">EDIT</a>
+                    <button
+                        hx-delete="/dashboard/posts/{{ post.id }}"
+                        hx-target="#post-row-{{ post.id }}"
+                        hx-swap="outerHTML"
+                        hx-confirm="Are you sure you want to delete this archive entry?"
+                        style="background: none; border: none; color: var(--error-color); cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.9rem; padding: 0;">
+                        DELETE
+                    </button>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="5" style="padding: 24px; text-align: center; color: var(--secondary-color);">No entries found in the archive.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

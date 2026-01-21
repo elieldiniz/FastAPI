@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}{{ action }} Post - Retro Tech Blog{% endblock %}
+
+{% block content %}
+<div style="max-width: 800px; margin: 0 auto;">
+    <div style="margin-bottom: 30px;">
+        <a href="/dashboard" style="color: var(--primary-color); text-decoration: none; font-family: 'Inter', sans-serif; font-weight: 700;">&larr; BACK TO DASHBOARD</a>
+    </div>
+
+    <h1>{{ action }} Archive Entry</h1>
+
+    <div class="card">
+        <form method="post">
+            <div>
+                <label for="title">Entry Title</label>
+                <input type="text" id="title" name="title" required minlength="5" maxlength="100" value="{{ post.title if post else '' }}" placeholder="Enter a descriptive title...">
+            </div>
+
+            <div>
+                <label for="content">Technical Content</label>
+                <textarea id="content" name="content" required minlength="20" rows="15" placeholder="Document the technical details here...">{{ post.content if post else '' }}</textarea>
+            </div>
+
+            <div style="display: flex; align-items: center; margin-bottom: 30px;">
+                <input type="checkbox" id="published" name="published" value="true" {{ 'checked' if post and post.published else '' }} style="width: auto; margin-right: 10px;">
+                <label for="published" style="margin-bottom: 0; text-transform: none; font-weight: 600;">Publish immediately to public archive</label>
+            </div>
+
+            <div style="border-top: 1px solid var(--border-color); padding-top: 20px;">
+                <button type="submit" class="btn btn-primary">COMMIT TO ARCHIVE</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

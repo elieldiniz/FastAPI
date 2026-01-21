@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Profile - Retro Tech Blog{% endblock %}
+
+{% block content %}
+<div style="max-width: 600px; margin: 0 auto;">
+    <h1 style="margin-bottom: 30px;">Researcher Profile</h1>
+    <div class="card">
+        <div style="display: flex; align-items: center; margin-bottom: 20px;">
+            <div style="width: 80px; height: 80px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; margin-right: 20px;">
+                {{ user.email[0].upper() }}
+            </div>
+            <div>
+                <h2 style="margin: 0;">{{ user.email }}</h2>
+                <p style="margin: 0; color: var(--secondary-color); text-transform: uppercase; font-size: 0.8rem; font-weight: 700;">Role: {{ user.role }}</p>
+            </div>
+        </div>
+        <p style="color: var(--secondary-color);">Member since {{ user.created_at.strftime('%Y-%m-%d') }}</p>
+
+        <div style="margin-top: 30px; border-top: 1px solid var(--border-color); padding-top: 20px;">
+            <a href="/logout" class="btn btn-primary" style="background: var(--error-color);">TERMINATE SESSION</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Retro Tech Blog{% endblock %}
+
+{% block content %}
+<section style="text-align: center; margin-bottom: 60px;">
+    <h1 style="font-size: 3rem; margin-bottom: 10px;">Welcome to the Archive</h1>
+    <p style="color: var(--secondary-color); font-size: 1.2rem;">Exploring the intersection of retro aesthetics and modern technology.</p>
+</section>
+
+<section>
+    <h2 style="border-bottom: 2px solid var(--primary-color); display: inline-block; margin-bottom: 30px;">Latest Posts</h2>
+
+    {% for post in posts %}
+    <article class="card">
+        <h3><a href="/posts/{{ post.id }}" style="color: var(--text-color); text-decoration: none;">{{ post.title }}</a></h3>
+        <p style="font-size: 0.9rem; color: var(--secondary-color); margin-bottom: 15px;">Published on {{ post.created_at.strftime('%Y-%m-%d') }}</p>
+        <p>{{ post.content[:200] }}...</p>
+        <a href="/posts/{{ post.id }}" class="ui-font" style="color: var(--primary-color); text-decoration: none; font-weight: 700;">READ MORE &rarr;</a>
+    </article>
+    {% else %}
+    <p>No posts found in the archive yet.</p>
+    {% endfor %}
+</section>
+{% endblock %}

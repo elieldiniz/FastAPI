@@ -38,7 +38,7 @@ def setup_db():
 def test_read_main():
     response = client.get("/")
     assert response.status_code == 200
-    assert response.json() == {"message": "Welcome to Mini Blog API"}
+    assert "Retro Tech Blog" in response.text
 
 def test_health_check():
     response = client.get("/health")

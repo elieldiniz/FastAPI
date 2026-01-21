@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}All Posts - Retro Tech Blog{% endblock %}
+
+{% block content %}
+<section>
+    <h1 style="margin-bottom: 40px;">Technical Archive</h1>
+
+    {% for post in posts %}
+    <article class="card">
+        <h3><a href="/posts/{{ post.id }}" style="color: var(--text-color); text-decoration: none;">{{ post.title }}</a></h3>
+        <p style="font-size: 0.9rem; color: var(--secondary-color); margin-bottom: 15px;">Published on {{ post.created_at.strftime('%Y-%m-%d') }}</p>
+        <p>{{ post.content[:200] }}...</p>
+        <a href="/posts/{{ post.id }}" class="ui-font" style="color: var(--primary-color); text-decoration: none; font-weight: 700;">READ MORE &rarr;</a>
+    </article>
+    {% else %}
+    <p>No posts found.</p>
+    {% endfor %}
+</section>
+{% endblock %}

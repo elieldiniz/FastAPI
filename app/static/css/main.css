@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Inter:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap');
+
+:root {
+    --bg-color: #F5F1EA;
+    --text-color: #1E1E1E;
+    --primary-color: #4A5D4E;
+    --secondary-color: #2F4F4F;
+    --border-color: #D8D3C8;
+    --card-bg: #FBF9F4;
+    --success-color: #5B7F6A;
+    --error-color: #8B3A3A;
+    --warning-color: #A67C52;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Merriweather', serif;
+    line-height: 1.7;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, .ui-font {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Enhanced */
+header {
+    border-bottom: 1px solid var(--border-color);
+    padding: 0;
+    margin-bottom: 40px;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.header-logo {
+    font-family: 'Merriweather', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--text-color);
+    letter-spacing: -1px;
+}
+
+.header-logo span {
+    color: var(--primary-color);
+    font-weight: 400;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.search-icon {
+    color: var(--secondary-color);
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-color);
+    object-fit: cover;
+    background-color: var(--border-color);
+}
+
+.status-indicator {
+    width: 12px;
+    height: 12px;
+    background-color: #2ECC71;
+    border: 2px solid var(--bg-color);
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.header-bottom {
+    display: flex;
+    gap: 30px;
+    margin-top: 10px;
+}
+
+.nav-link {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+    text-decoration: none;
+    padding: 10px 0;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+    opacity: 0.8;
+}
+
+.nav-link:hover {
+    opacity: 1;
+}
+
+.nav-link.active {
+    opacity: 1;
+    color: var(--text-color);
+    border-bottom-color: var(--secondary-color); /* Petroleum Blue */
+}
+
+/* Cards */
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    box-shadow: 2px 2px 0 rgba(0,0,0,0.05);
+    padding: 24px;
+    margin-bottom: 24px;
+    transition: transform 0.15s ease;
+}
+
+.card:hover {
+    transform: translateY(-1px);
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border: none;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: var(--card-bg);
+}
+
+.btn-primary:hover {
+    background: #3F5144;
+}
+
+/* Forms */
+form div {
+    margin-bottom: 16px;
+}
+
+label {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--card-bg);
+    font-family: 'Merriweather', serif;
+    box-sizing: border-box;
+}
+
+/* Footer */
+footer {
+    border-top: 1px solid var(--border-color);
+    padding: 40px 0;
+    margin-top: 80px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--secondary-color);
+}

@@ -19,10 +19,10 @@
                     </div>
 
                     {% if user %}
-                    <div class="user-profile">
+                    <a href="/profile" class="user-profile">
                         <img src="https://api.dicebear.com/7.x/avataaars/svg?seed={{ user.email }}" alt="User Avatar" class="avatar">
                         <div class="status-indicator"></div>
-                    </div>
+                    </a>
                     {% else %}
                     <a href="/login" class="btn btn-primary" style="padding: 5px 15px; font-size: 0.8rem;">LOGIN</a>
                     {% endif %}
@@ -36,7 +36,7 @@
                 <a href="/dashboard" class="nav-link {% if request.url.path.startswith('/dashboard') %}active{% endif %}">Dashboard</a>
                 {% endif %}
                 {% if user %}
-                <a href="/profile" class="nav-link {% if request.url.path == '/profile' %}active{% endif %}">Settings</a>
+                <a href="/profile" class="nav-link {% if request.url.path == '/profile' %}active{% endif %}">Profile</a>
                 <a href="/logout" class="nav-link" style="margin-left: auto; opacity: 0.5;">Logout</a>
                 {% endif %}
             </nav>

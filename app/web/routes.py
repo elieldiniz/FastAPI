@@ -16,19 +16,32 @@ import bleach
 router = APIRouter()
 templates = Jinja2Templates(directory="app/templates")
 
+from bleach.css_sanitizer import CSSSanitizer
+
+# Define Markdown filter constants for performance
+ALLOWED_MARKDOWN_TAGS = bleach.ALLOWED_TAGS | {
+    'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+    'pre', 'code', 'span', 'div', 'br', 'img',
+    'table', 'thead', 'tbody', 'tr', 'th', 'td'
+}
+ALLOWED_MARKDOWN_ATTRS = bleach.ALLOWED_ATTRIBUTES.copy()
+ALLOWED_MARKDOWN_ATTRS['*'] = ['class', 'style']
+ALLOWED_MARKDOWN_ATTRS['img'] = ['src', 'alt', 'title']
+
+css_sanitizer = CSSSanitizer(allowed_css_properties=[
+    'color', 'font-weight', 'text-align', 'margin', 'padding'
+])
+
 def markdown_filter(text):
     # Convert markdown to HTML
     html = markdown2.markdown(text, extras=["fenced-code-blocks", "tables"])
-    # Sanitize HTML
-    allowed_tags = bleach.ALLOWED_TAGS | {
-        'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
-        'pre', 'code', 'span', 'div', 'br',
-        'table', 'thead', 'tbody', 'tr', 'th', 'td'
-    }
-    allowed_attrs = bleach.ALLOWED_ATTRIBUTES.copy()
-    allowed_attrs['*'] = ['class', 'style']
-
-    clean_html = bleach.clean(html, tags=allowed_tags, attributes=allowed_attrs)
+    # Sanitize HTML with CSS sanitizer for security
+    clean_html = bleach.clean(
+        html,
+        tags=ALLOWED_MARKDOWN_TAGS,
+        attributes=ALLOWED_MARKDOWN_ATTRS,
+        css_sanitizer=css_sanitizer
+    )
     return clean_html
 
 templates.env.filters["markdown"] = markdown_filter

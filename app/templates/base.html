@@ -10,23 +10,35 @@
 <body>
     <header>
         <div class="container">
-            <nav style="display: flex; justify-content: space-between; align-items: center;">
-                <div>
-                    <a href="/" style="font-weight: 700; font-size: 1.2rem;">Retro Tech Blog</a>
-                </div>
-                <div>
-                    <a href="/">Home</a>
-                    <a href="/posts">Posts</a>
+            <div class="header-top">
+                <a href="/" class="header-logo">RETRO <span>TECH</span></a>
+
+                <div class="header-actions">
+                    <div class="search-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </div>
+
                     {% if user %}
-                        {% if user.role == 'admin' %}
-                            <a href="/dashboard">Dashboard</a>
-                        {% endif %}
-                        <a href="/profile">Profile</a>
-                        <a href="/logout">Logout</a>
+                    <div class="user-profile">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed={{ user.email }}" alt="User Avatar" class="avatar">
+                        <div class="status-indicator"></div>
+                    </div>
                     {% else %}
-                        <a href="/login">Login</a>
+                    <a href="/login" class="btn btn-primary" style="padding: 5px 15px; font-size: 0.8rem;">LOGIN</a>
                     {% endif %}
                 </div>
+            </div>
+
+            <nav class="header-bottom">
+                <a href="/" class="nav-link {% if request.url.path == '/' %}active{% endif %}">Home</a>
+                <a href="/posts" class="nav-link {% if request.url.path.startswith('/posts') %}active{% endif %}">Posts</a>
+                {% if user and user.role == 'admin' %}
+                <a href="/dashboard" class="nav-link {% if request.url.path.startswith('/dashboard') %}active{% endif %}">Dashboard</a>
+                {% endif %}
+                {% if user %}
+                <a href="/profile" class="nav-link {% if request.url.path == '/profile' %}active{% endif %}">Settings</a>
+                <a href="/logout" class="nav-link" style="margin-left: auto; opacity: 0.5;">Logout</a>
+                {% endif %}
             </nav>
         </div>
     </header>
